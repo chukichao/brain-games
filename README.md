@@ -8,8 +8,12 @@
 
 ### Brain Even:
 
-[![asciicast](https://asciinema.org/a/MsrVBAmFlP7rzNxJGxoAle5GE.svg)](https://asciinema.org/a/MsrVBAmFlP7rzNxJGxoAle5GE)
+[![asciicast](https://asciinema.org/a/PLLtAFv5Ij9XQhHLvMuXfDsc6.svg)](https://asciinema.org/a/PLLtAFv5Ij9XQhHLvMuXfDsc6)
 
 ### Brain Calc:
 
-[![asciicast](https://asciinema.org/a/iv7AwyznXemYQeRJCgMwdga1D.svg)](https://asciinema.org/a/iv7AwyznXemYQeRJCgMwdga1D)
+[![asciicast](https://asciinema.org/a/iIT7hW55GwJVvdr32NjeDxmGd.svg)](https://asciinema.org/a/iIT7hW55GwJVvdr32NjeDxmGd)
+
+### Brain Gcd:
+
+[![asciicast](https://asciinema.org/a/rhbxxjNzK7BqUO2mTJZvEPAOA.svg)](https://asciinema.org/a/rhbxxjNzK7BqUO2mTJZvEPAOA)

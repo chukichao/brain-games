@@ -28,10 +28,10 @@ const validate = (randomNumber1, randomNumber2, randomSign, userAnswer) => {
   }
 
   if (userAnswer === correctAnswer) {
-    return [true, correctAnswer];
+    return [true, userAnswer, correctAnswer];
   }
 
-  return [false, correctAnswer];
+  return [false, userAnswer, correctAnswer];
 };
 
 function brainCalc(userName) {
@@ -49,7 +49,9 @@ function brainCalc(userName) {
       console.log('Correct!');
       countRightAnswers += 1;
     } else {
-      console.log(`'yes' is wrong answer ;(. Correct answer was '${isCorrectAnswer[1]}'.`);
+      console.log(
+        `'${isCorrectAnswer[1]}' is wrong answer ;(. Correct answer was '${isCorrectAnswer[2]}'.`,
+      );
       console.log(`Let's try again, ${userName}!`);
       countRightAnswers = 0;
     }
