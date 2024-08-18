@@ -1,15 +1,8 @@
 import readlineSync from 'readline-sync';
 
-const greetUser = () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  return userName;
-};
+const getRandomNumber = () => Math.floor(Math.random() * 100 + 1);
 
-const genRandomNumber = () => Math.floor(Math.random() * 100 + 1);
-
-const validateEvenNumber = (randomNumber, userAnswer) => {
+const validate = (randomNumber, userAnswer) => {
   const correctAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
 
   if (userAnswer !== 'yes' && userAnswer !== 'no') return [false, correctAnswer];
@@ -21,17 +14,14 @@ const validateEvenNumber = (randomNumber, userAnswer) => {
   return [false, correctAnswer];
 };
 
-function brainEven() {
-  const userName = greetUser();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-
+function brainEven(userName) {
   let countRightAnswers = 0;
   while (countRightAnswers < 3) {
-    const randomNumber = genRandomNumber();
+    const randomNumber = getRandomNumber();
     console.log(`Question: ${randomNumber}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    const isCorrectAnswer = validateEvenNumber(randomNumber, userAnswer);
+    const isCorrectAnswer = validate(randomNumber, userAnswer);
     if (isCorrectAnswer[0] === true) {
       console.log('Correct!');
       countRightAnswers += 1;
@@ -41,8 +31,6 @@ function brainEven() {
       countRightAnswers = 0;
     }
   }
-
-  console.log(`Congratulations, ${userName}`);
 }
 
 export default brainEven;

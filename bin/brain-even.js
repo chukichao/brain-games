@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import brainEven from '../src/brainEven.js';
+import App from '../src/index.js';
 
-brainEven();
+App('brainEven', 'Answer "yes" if the number is even, otherwise answer "no".');
