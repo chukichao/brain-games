@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const getRandomNumber = () => Math.floor(Math.random() * 100 + 1);
+const getRandomNumber = () => Math.floor(Math.random() * 10 + 1);
 
 const getRandomSign = () => {
   const signs = ['+', '-', '*'];
