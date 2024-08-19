@@ -27,7 +27,7 @@ const validate = (randomNumber1, randomNumber2, randomSign, userAnswer) => {
     default:
   }
 
-  if (userAnswer === correctAnswer) {
+  if (typeof userAnswer === 'number' && userAnswer === correctAnswer) {
     return [true, userAnswer, correctAnswer];
   }
 
@@ -40,7 +40,7 @@ function brainCalc() {
   const randomSign = getRandomSign();
 
   console.log(`Question: ${randomNumber1} ${randomSign} ${randomNumber2}`);
-  const userAnswer = Number(readlineSync.question('Your answer: '));
+  const userAnswer = readlineSync.question('Your answer: ');
 
   const isCorrectAnswer = validate(randomNumber1, randomNumber2, randomSign, userAnswer);
   return isCorrectAnswer;

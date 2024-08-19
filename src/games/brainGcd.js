@@ -25,7 +25,7 @@ const validate = (randomNumber1, randomNumber2, userAnswer) => {
     }
   });
 
-  if (userAnswer === correctAnswer) {
+  if (typeof userAnswer === 'number' && userAnswer === correctAnswer) {
     return [true, userAnswer, correctAnswer];
   }
 
@@ -37,7 +37,7 @@ function brainGcd() {
   const randomNumber2 = getRandomNumber();
 
   console.log(`Question: ${randomNumber1} ${randomNumber2}`);
-  const userAnswer = Number(readlineSync.question('Your answer: '));
+  const userAnswer = readlineSync.question('Your answer: ');
 
   const isCorrectAnswer = validate(randomNumber1, randomNumber2, userAnswer);
   return isCorrectAnswer;

@@ -20,7 +20,7 @@ const getRandomIndex = () => {
 };
 
 const validate = (correctAnswer, userAnswer) => {
-  if (userAnswer === correctAnswer) {
+  if (typeof userAnswer === 'number' && userAnswer === correctAnswer) {
     return [true, userAnswer, correctAnswer];
   }
 
@@ -35,7 +35,7 @@ function brainProgression() {
   randomProgression[randomIndex] = '..';
 
   console.log(`Question: ${randomProgression.join(' ')}`);
-  const userAnswer = Number(readlineSync.question('Your answer: '));
+  const userAnswer = readlineSync.question('Your answer: ');
 
   const isCorrectAnswer = validate(correctAnswer, userAnswer);
   return isCorrectAnswer;

@@ -5,7 +5,7 @@ const getRandomNumber = () => Math.floor(Math.random() * 100 + 1);
 const validate = (randomNumber, userAnswer) => {
   const correctAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
 
-  if (userAnswer !== 'yes' && userAnswer !== 'no') return [false, correctAnswer];
+  if (userAnswer !== 'yes' && userAnswer !== 'no') return [false, userAnswer, correctAnswer];
 
   if (userAnswer === correctAnswer) {
     return [true, userAnswer, correctAnswer];

@@ -8,7 +8,7 @@ const validate = (randomPrimeNumber, userAnswer) => {
     return 'yes';
   };
 
-  if (userAnswer !== 'yes' && userAnswer !== 'no') return [false, correctAnswer()];
+  if (userAnswer !== 'yes' && userAnswer !== 'no') return [false, userAnswer, correctAnswer()];
 
   if (userAnswer === correctAnswer()) {
     return [true, userAnswer, correctAnswer()];
