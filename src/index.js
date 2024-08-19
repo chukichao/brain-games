@@ -43,7 +43,7 @@ function App(game, rule) {
         `'${isCorrectAnswer[1]}' is wrong answer ;(. Correct answer was '${isCorrectAnswer[2]}'.`,
       );
       console.log(`Let's try again, ${userName}!`);
-      rightAnswersCount = 0;
+      return;
     }
   }
 
