@@ -34,28 +34,16 @@ const validate = (randomNumber1, randomNumber2, randomSign, userAnswer) => {
   return [false, userAnswer, correctAnswer];
 };
 
-function brainCalc(userName) {
-  let countRightAnswers = 0;
-  while (countRightAnswers < 3) {
-    const randomNumber1 = getRandomNumber();
-    const randomNumber2 = getRandomNumber();
-    const randomSign = getRandomSign();
+function brainCalc() {
+  const randomNumber1 = getRandomNumber();
+  const randomNumber2 = getRandomNumber();
+  const randomSign = getRandomSign();
 
-    console.log(`Question: ${randomNumber1} ${randomSign} ${randomNumber2}`);
-    const userAnswer = Number(readlineSync.question('Your answer: '));
+  console.log(`Question: ${randomNumber1} ${randomSign} ${randomNumber2}`);
+  const userAnswer = Number(readlineSync.question('Your answer: '));
 
-    const isCorrectAnswer = validate(randomNumber1, randomNumber2, randomSign, userAnswer);
-    if (isCorrectAnswer[0] === true) {
-      console.log('Correct!');
-      countRightAnswers += 1;
-    } else {
-      console.log(
-        `'${isCorrectAnswer[1]}' is wrong answer ;(. Correct answer was '${isCorrectAnswer[2]}'.`,
-      );
-      console.log(`Let's try again, ${userName}!`);
-      countRightAnswers = 0;
-    }
-  }
+  const isCorrectAnswer = validate(randomNumber1, randomNumber2, randomSign, userAnswer);
+  return isCorrectAnswer;
 }
 
 export default brainCalc;

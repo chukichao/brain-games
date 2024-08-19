@@ -27,30 +27,18 @@ const validate = (correctAnswer, userAnswer) => {
   return [false, userAnswer, correctAnswer];
 };
 
-function brainProgression(userName) {
-  let countRightAnswers = 0;
-  while (countRightAnswers < 3) {
-    const randomProgression = getRandomProgression();
-    const randomIndex = getRandomIndex();
+function brainProgression() {
+  const randomProgression = getRandomProgression();
+  const randomIndex = getRandomIndex();
 
-    const correctAnswer = randomProgression[randomIndex];
-    randomProgression[randomIndex] = '..';
+  const correctAnswer = randomProgression[randomIndex];
+  randomProgression[randomIndex] = '..';
 
-    console.log(`Question: ${randomProgression.join(' ')}`);
-    const userAnswer = Number(readlineSync.question('Your answer: '));
+  console.log(`Question: ${randomProgression.join(' ')}`);
+  const userAnswer = Number(readlineSync.question('Your answer: '));
 
-    const isCorrectAnswer = validate(correctAnswer, userAnswer);
-    if (isCorrectAnswer[0] === true) {
-      console.log('Correct!');
-      countRightAnswers += 1;
-    } else {
-      console.log(
-        `'${isCorrectAnswer[1]}' is wrong answer ;(. Correct answer was '${isCorrectAnswer[2]}'.`,
-      );
-      console.log(`Let's try again, ${userName}!`);
-      countRightAnswers = 0;
-    }
-  }
+  const isCorrectAnswer = validate(correctAnswer, userAnswer);
+  return isCorrectAnswer;
 }
 
 export default brainProgression;
