@@ -4,6 +4,7 @@ import brainEven from './games/brainEven.js';
 import brainCalc from './games/brainCalc.js';
 import brainGcd from './games/brainGcd.js';
 import brainProgression from './games/brainProgression.js';
+import brainPrime from './games/brainPrime.js';
 
 function App(game, rule) {
   console.log('Welcome to the Brain Games!');
@@ -24,6 +25,9 @@ function App(game, rule) {
       break;
     case 'brainProgression':
       brainProgression(userName);
+      break;
+    case 'brainPrime':
+      brainPrime(userName);
       break;
     default:
   }
