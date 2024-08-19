@@ -25,7 +25,7 @@ const validate = (randomNumber1, randomNumber2, userAnswer) => {
     }
   });
 
-  if (typeof userAnswer === 'number' && userAnswer === correctAnswer) {
+  if (Number(userAnswer) !== 'NaN' && Number(userAnswer) === correctAnswer) {
     return [true, userAnswer, correctAnswer];
   }
 

@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const getRandomNumber = () => Math.floor(Math.random() * 10 + 1);
+const getRandomNumber = () => Math.floor(Math.random() * 100 + 1);
 
 const getRandomSign = () => {
   const signs = ['+', '-', '*'];
@@ -27,7 +27,7 @@ const validate = (randomNumber1, randomNumber2, randomSign, userAnswer) => {
     default:
   }
 
-  if (typeof userAnswer === 'number' && userAnswer === correctAnswer) {
+  if (Number(userAnswer) !== 'NaN' && Number(userAnswer) === correctAnswer) {
     return [true, userAnswer, correctAnswer];
   }
 

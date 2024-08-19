@@ -20,7 +20,7 @@ const getRandomIndex = () => {
 };
 
 const validate = (correctAnswer, userAnswer) => {
-  if (typeof userAnswer === 'number' && userAnswer === correctAnswer) {
+  if (Number(userAnswer) !== 'NaN' && Number(userAnswer) === correctAnswer) {
     return [true, userAnswer, correctAnswer];
   }
 
