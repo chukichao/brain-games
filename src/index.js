@@ -3,6 +3,7 @@ import readlineSync from 'readline-sync';
 import brainEven from './games/brainEven.js';
 import brainCalc from './games/brainCalc.js';
 import brainGcd from './games/brainGcd.js';
+import brainProgression from './games/brainProgression.js';
 
 function App(game, rule) {
   console.log('Welcome to the Brain Games!');
@@ -20,6 +21,9 @@ function App(game, rule) {
       break;
     case 'brainGcd':
       brainGcd(userName);
+      break;
+    case 'brainProgression':
+      brainProgression(userName);
       break;
     default:
   }
