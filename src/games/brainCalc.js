@@ -39,7 +39,7 @@ function brainCalc() {
   const randomNumber2 = getRandomNumber();
   const randomSign = getRandomSign();
 
-  console.log(`Question: ${randomNumber1} ${randomSign} ${randomNumber2}`);
+  console.log('Question:', randomNumber1, randomSign, randomNumber2);
   const userAnswer = readlineSync.question('Your answer: ');
 
   const isCorrectAnswer = validate(randomNumber1, randomNumber2, randomSign, userAnswer);

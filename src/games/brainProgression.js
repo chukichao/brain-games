@@ -34,7 +34,7 @@ function brainProgression() {
   const correctAnswer = randomProgression[randomIndex];
   randomProgression[randomIndex] = '..';
 
-  console.log(`Question: ${randomProgression.join(' ')}`);
+  console.log('Question:', ...randomProgression);
   const userAnswer = readlineSync.question('Your answer: ');
 
   const isCorrectAnswer = validate(correctAnswer, userAnswer);

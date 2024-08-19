@@ -43,11 +43,13 @@ function App(game, rule) {
         `'${isCorrectAnswer[1]}' is wrong answer ;(. Correct answer was '${isCorrectAnswer[2]}'.`,
       );
       console.log(`Let's try again, ${userName}!`);
-      return;
+      break;
     }
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  if (rightAnswersCount === 3) {
+    console.log(`Congratulations, ${userName}!`);
+  }
 }
 
 export default App;

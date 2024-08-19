@@ -36,7 +36,7 @@ function brainGcd() {
   const randomNumber1 = getRandomNumber();
   const randomNumber2 = getRandomNumber();
 
-  console.log(`Question: ${randomNumber1} ${randomNumber2}`);
+  console.log('Question:', randomNumber1, randomNumber2);
   const userAnswer = readlineSync.question('Your answer: ');
 
   const isCorrectAnswer = validate(randomNumber1, randomNumber2, userAnswer);

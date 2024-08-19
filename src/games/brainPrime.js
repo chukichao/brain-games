@@ -20,7 +20,7 @@ const validate = (randomPrimeNumber, userAnswer) => {
 function brainPrime() {
   const randomPrimeNumber = Math.floor(Math.random() * 100 + 2);
 
-  console.log(`Question: ${randomPrimeNumber}`);
+  console.log('Question:', randomPrimeNumber);
   const userAnswer = readlineSync.question('Your answer: ');
 
   const isCorrectAnswer = validate(randomPrimeNumber, userAnswer);
