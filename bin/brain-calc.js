@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import App from '../src/index.js';
+import run from '../src/games/brainCalc.js';
 
-App('brainCalc', 'What is the result of the expression?');
+run();

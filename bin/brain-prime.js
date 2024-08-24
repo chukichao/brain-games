@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import App from '../src/index.js';
+import run from '../src/games/brainPrime.js';
 
-App('brainPrime', 'Answer "yes" if given number is prime. Otherwise answer "no".');
+run();

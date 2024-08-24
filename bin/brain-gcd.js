@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import App from '../src/index.js';
+import run from '../src/games/brainGcd.js';
 
-App('brainGcd', 'Find the greatest common divisor of given numbers.');
+run();

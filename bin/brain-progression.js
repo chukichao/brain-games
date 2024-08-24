@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import App from '../src/index.js';
+import run from '../src/games/brainProgression.js';
 
-App('brainProgression', 'What number is missing in the progression?');
+run();
