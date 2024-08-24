@@ -1,30 +1,21 @@
-import readlineSync from 'readline-sync';
+import runEngine from '../index.js';
+import { getRandomNumber } from '../utils/utilsRandom.js';
+import { isNumberPrime } from '../utils/utilsNumber.js';
 
-const validate = (randomPrimeNumber, userAnswer) => {
-  const correctAnswer = () => {
-    for (let i = 2; i < randomPrimeNumber; i += 1) {
-      if (randomPrimeNumber % i === 0) return 'no';
-    }
-    return 'yes';
-  };
-
-  if (userAnswer !== 'yes' && userAnswer !== 'no') return [false, userAnswer, correctAnswer()];
-
-  if (userAnswer === correctAnswer()) {
-    return [true, userAnswer, correctAnswer()];
-  }
-
-  return [false, userAnswer, correctAnswer()];
+const generateQuestion = () => {
+  const randomNumber = getRandomNumber(2, 100);
+  return [randomNumber];
 };
 
-function brainPrime() {
-  const randomPrimeNumber = Math.floor(Math.random() * 100 + 2);
+const calculate = (randomNumber) => {
+  const correctAnswer = isNumberPrime(randomNumber) ? 'yes' : 'no';
+  return correctAnswer;
+};
 
-  console.log('Question:', randomPrimeNumber);
-  const userAnswer = readlineSync.question('Your answer: ');
-
-  const isCorrectAnswer = validate(randomPrimeNumber, userAnswer);
-  return isCorrectAnswer;
+export default function runBrainPrime() {
+  runEngine(
+    'Answer "yes" if given number is prime. Otherwise answer "no".',
+    generateQuestion,
+    calculate,
+  );
 }
-
-export default brainPrime;

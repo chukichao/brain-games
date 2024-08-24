@@ -1,19 +1,16 @@
-import readlineSync from 'readline-sync';
+import runEngine from '../index.js';
+import { getRandomNumber, getRandomItemFromArray } from '../utils/utilsRandom.js';
 
-const getRandomNumber = () => Math.floor(Math.random() * 10 + 1);
+const generateQuestion = () => {
+  const randomNumber1 = getRandomNumber(1, 10);
+  const randomNumber2 = getRandomNumber(1, 10);
+  const randomSign = getRandomItemFromArray(['+', '-', '*']);
 
-const getRandomSign = () => {
-  const signs = ['+', '-', '*'];
-
-  const min = Math.ceil(0);
-  const max = Math.floor(2);
-  const randomIndex = Math.floor(Math.random() * (max - min + 1) + min);
-
-  return signs[randomIndex];
+  return [randomNumber1, randomSign, randomNumber2];
 };
 
-const validate = (randomNumber1, randomNumber2, randomSign, userAnswer) => {
-  let correctAnswer = null;
+const calculate = (randomNumber1, randomSign, randomNumber2) => {
+  let correctAnswer = 0;
   switch (randomSign) {
     case '+':
       correctAnswer = randomNumber1 + randomNumber2;
@@ -26,24 +23,9 @@ const validate = (randomNumber1, randomNumber2, randomSign, userAnswer) => {
       break;
     default:
   }
-
-  if (Number(userAnswer) !== 'NaN' && Number(userAnswer) === correctAnswer) {
-    return [true, userAnswer, correctAnswer];
-  }
-
-  return [false, userAnswer, correctAnswer];
+  return String(correctAnswer);
 };
 
-function brainCalc() {
-  const randomNumber1 = getRandomNumber();
-  const randomNumber2 = getRandomNumber();
-  const randomSign = getRandomSign();
-
-  console.log('Question:', randomNumber1, randomSign, randomNumber2);
-  const userAnswer = readlineSync.question('Your answer: ');
-
-  const isCorrectAnswer = validate(randomNumber1, randomNumber2, randomSign, userAnswer);
-  return isCorrectAnswer;
+export default function runBrainCalc() {
+  runEngine('What is the result of the expression?', generateQuestion, calculate);
 }
-
-export default brainCalc;

@@ -1,26 +1,21 @@
-import readlineSync from 'readline-sync';
+import runEngine from '../index.js';
+import { getRandomNumber } from '../utils/utilsRandom.js';
+import { isNumberEven } from '../utils/utilsNumber.js';
 
-const getRandomNumber = () => Math.floor(Math.random() * 100 + 1);
-
-const validate = (randomNumber, userAnswer) => {
-  const correctAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
-
-  if (userAnswer !== 'yes' && userAnswer !== 'no') return [false, userAnswer, correctAnswer];
-
-  if (userAnswer === correctAnswer) {
-    return [true, userAnswer, correctAnswer];
-  }
-
-  return [false, userAnswer, correctAnswer];
+const generateQuestion = () => {
+  const randomNumber = getRandomNumber(1, 100);
+  return [randomNumber];
 };
 
-function brainEven() {
-  const randomNumber = getRandomNumber();
-  console.log('Question:', randomNumber);
-  const userAnswer = readlineSync.question('Your answer: ');
+const calculate = (randomNumber) => {
+  const correctAnswer = isNumberEven(randomNumber) ? 'yes' : 'no';
+  return correctAnswer;
+};
 
-  const isCorrectAnswer = validate(randomNumber, userAnswer);
-  return isCorrectAnswer;
+export default function runBrainEven() {
+  runEngine(
+    'Answer "yes" if the number is even, otherwise answer "no".',
+    generateQuestion,
+    calculate,
+  );
 }
-
-export default brainEven;

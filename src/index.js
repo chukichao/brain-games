@@ -1,12 +1,6 @@
 import readlineSync from 'readline-sync';
 
-import brainEven from './games/brainEven.js';
-import brainCalc from './games/brainCalc.js';
-import brainGcd from './games/brainGcd.js';
-import brainProgression from './games/brainProgression.js';
-import brainPrime from './games/brainPrime.js';
-
-function App(game, rule) {
+function runEngine(rule, generateQuestion, calculate) {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
@@ -14,37 +8,21 @@ function App(game, rule) {
   console.log(rule);
 
   let rightAnswersCount = 0;
-  while (rightAnswersCount < 3) {
-    let isCorrectAnswer = null;
-    switch (game) {
-      case 'brainEven':
-        isCorrectAnswer = brainEven();
-        break;
-      case 'brainCalc':
-        isCorrectAnswer = brainCalc();
-        break;
-      case 'brainGcd':
-        isCorrectAnswer = brainGcd();
-        break;
-      case 'brainProgression':
-        isCorrectAnswer = brainProgression();
-        break;
-      case 'brainPrime':
-        isCorrectAnswer = brainPrime();
-        break;
-      default:
-    }
+  for (; rightAnswersCount < 3; rightAnswersCount += 1) {
+    const questionParams = generateQuestion();
+    console.log('Question:', questionParams.join(' '));
 
-    if (isCorrectAnswer[0] === true) {
-      console.log('Correct!');
-      rightAnswersCount += 1;
-    } else {
-      console.log(
-        `'${isCorrectAnswer[1]}' is wrong answer ;(. Correct answer was '${isCorrectAnswer[2]}'.`,
-      );
+    const userAnswer = readlineSync.question('Your answer: ');
+
+    const correctAnswer = calculate(...questionParams);
+
+    if (correctAnswer !== userAnswer) {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
       break;
     }
+
+    console.log('Correct!');
   }
 
   if (rightAnswersCount === 3) {
@@ -52,4 +30,4 @@ function App(game, rule) {
   }
 }
 
-export default App;
+export default runEngine;

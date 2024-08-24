@@ -1,44 +1,29 @@
-import readlineSync from 'readline-sync';
+import runEngine from '../index.js';
+import {
+  getRandomProgression,
+  getRandomIndexFromArrayWithoutOutermost,
+} from '../utils/utilsRandom.js';
 
-const getRandomProgression = () => {
-  let randomNumber = Math.floor(Math.random() * 100 + 1);
-
-  const progression = [];
-  for (let i = 1; i <= 10; i += 1) {
-    randomNumber += 3;
-    progression.push(randomNumber);
-  }
-
-  return progression;
-};
-
-const getRandomIndex = () => {
-  const min = Math.ceil(0);
-  const max = Math.floor(9);
-  const randomIndex = Math.floor(Math.random() * (max - min + 1) + min);
-  return randomIndex;
-};
-
-const validate = (correctAnswer, userAnswer) => {
-  if (Number(userAnswer) !== 'NaN' && Number(userAnswer) === correctAnswer) {
-    return [true, userAnswer, correctAnswer];
-  }
-
-  return [false, userAnswer, correctAnswer];
-};
-
-function brainProgression() {
-  const randomProgression = getRandomProgression();
-  const randomIndex = getRandomIndex();
-
-  const correctAnswer = randomProgression[randomIndex];
+const generateQuestion = () => {
+  const progressionStep = 3;
+  const randomProgression = getRandomProgression(0, 100, progressionStep);
+  const randomIndex = getRandomIndexFromArrayWithoutOutermost(randomProgression);
   randomProgression[randomIndex] = '..';
 
-  console.log('Question:', ...randomProgression);
-  const userAnswer = readlineSync.question('Your answer: ');
+  return [...randomProgression];
+};
 
-  const isCorrectAnswer = validate(correctAnswer, userAnswer);
-  return isCorrectAnswer;
+const calculate = (...randomProgression) => {
+  let correctAnswer = 0;
+  for (let i = 0; i < randomProgression.length; i += 1) {
+    if (randomProgression[i] === '..') {
+      const progressionStep = 3;
+      correctAnswer = randomProgression[i + 1] - progressionStep;
+    }
+  }
+  return String(correctAnswer);
+};
+
+export default function runBrainProgression() {
+  runEngine('What number is missing in the progression?', generateQuestion, calculate);
 }
-
-export default brainProgression;
