@@ -1,31 +1,38 @@
 import runEngine from '../index.js';
-import { getRandomNumber, getRandomItemFromArray } from '../utils/utilsRandom.js';
+import getRandomNumber from '../utils.js';
 
-const generateQuestion = () => {
+const getRandomItemFromArray = (array) => {
+  const min = Math.ceil(0);
+  const max = Math.floor(array.length - 1);
+
+  const randomIndex = getRandomNumber(min, max);
+
+  return array[randomIndex];
+};
+
+const calculate = (num1, num2, sigh) => {
+  switch (sigh) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    default:
+      throw new Error(`Unknown order state: '${sigh}'!`);
+  }
+};
+
+const generateRound = () => {
   const randomNumber1 = getRandomNumber(1, 10);
   const randomNumber2 = getRandomNumber(1, 10);
   const randomSign = getRandomItemFromArray(['+', '-', '*']);
 
-  return [randomNumber1, randomSign, randomNumber2];
-};
+  const correctAnswer = calculate(randomNumber1, randomNumber2, randomSign);
 
-const calculate = (randomNumber1, randomSign, randomNumber2) => {
-  let correctAnswer = 0;
-  switch (randomSign) {
-    case '+':
-      correctAnswer = randomNumber1 + randomNumber2;
-      break;
-    case '-':
-      correctAnswer = randomNumber1 - randomNumber2;
-      break;
-    case '*':
-      correctAnswer = randomNumber1 * randomNumber2;
-      break;
-    default:
-  }
-  return String(correctAnswer);
+  return [String(correctAnswer), [randomNumber1, randomSign, randomNumber2]];
 };
 
 export default function runBrainCalc() {
-  runEngine('What is the result of the expression?', generateQuestion, calculate);
+  runEngine('What is the result of the expression?', generateRound);
 }

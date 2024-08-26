@@ -1,21 +1,22 @@
 import runEngine from '../index.js';
-import { getRandomNumber } from '../utils/utilsRandom.js';
-import { isNumberPrime } from '../utils/utilsNumber.js';
+import getRandomNumber from '../utils.js';
 
-const generateQuestion = () => {
-  const randomNumber = getRandomNumber(2, 100);
-  return [randomNumber];
+const isNumberPrime = (number) => {
+  for (let i = 2; i < number; i += 1) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+  return true;
 };
 
-const calculate = (randomNumber) => {
+const generateRound = () => {
+  const randomNumber = getRandomNumber(2, 100);
+
   const correctAnswer = isNumberPrime(randomNumber) ? 'yes' : 'no';
-  return correctAnswer;
+  return [correctAnswer, [randomNumber]];
 };
 
 export default function runBrainPrime() {
-  runEngine(
-    'Answer "yes" if given number is prime. Otherwise answer "no".',
-    generateQuestion,
-    calculate,
-  );
+  runEngine('Answer "yes" if given number is prime. Otherwise answer "no".', generateRound);
 }

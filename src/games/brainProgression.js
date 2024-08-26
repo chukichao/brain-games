@@ -1,29 +1,42 @@
 import runEngine from '../index.js';
-import {
-  getRandomProgression,
-  getRandomIndexFromArrayWithoutOutermost,
-} from '../utils/utilsRandom.js';
+import getRandomNumber from '../utils.js';
 
-const generateQuestion = () => {
-  const progressionStep = 3;
-  const randomProgression = getRandomProgression(0, 100, progressionStep);
-  const randomIndex = getRandomIndexFromArrayWithoutOutermost(randomProgression);
-  randomProgression[randomIndex] = '..';
+const getRandomProgression = (start, length, step) => {
+  let currentNumber = start;
 
-  return [...randomProgression];
+  const progression = [];
+  for (let i = 1; i <= length; i += 1) {
+    currentNumber += step;
+    progression.push(currentNumber);
+  }
+
+  return progression;
 };
 
-const calculate = (...randomProgression) => {
-  let correctAnswer = 0;
-  for (let i = 0; i < randomProgression.length; i += 1) {
-    if (randomProgression[i] === '..') {
-      const progressionStep = 3;
-      correctAnswer = randomProgression[i + 1] - progressionStep;
-    }
-  }
-  return String(correctAnswer);
+const getRandomIndexFromArray = (array) => {
+  const min = Math.ceil(0);
+  const max = Math.floor(array.length - 1);
+  const randomIndex = getRandomNumber(min, max);
+  return randomIndex;
+};
+
+const generateRound = () => {
+  const progressionStart = getRandomNumber(0, 100);
+  const progressionLength = 10;
+  const progressionStep = 3;
+  const randomProgression = getRandomProgression(
+    progressionStart,
+    progressionLength,
+    progressionStep,
+  );
+
+  const randomIndex = getRandomIndexFromArray(randomProgression);
+  const correctAnswer = randomProgression[randomIndex];
+  randomProgression[randomIndex] = '..';
+
+  return [String(correctAnswer), [...randomProgression]];
 };
 
 export default function runBrainProgression() {
-  runEngine('What number is missing in the progression?', generateQuestion, calculate);
+  runEngine('What number is missing in the progression?', generateRound);
 }
