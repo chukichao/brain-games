@@ -10,7 +10,7 @@ function runEngine(rule, generateRound) {
   const roundsCount = 3;
   for (let rightAnswersCount = 0; rightAnswersCount < roundsCount; rightAnswersCount += 1) {
     const [correctAnswer, questionParams] = generateRound();
-    console.log('Question:', questionParams.join(' '));
+    console.log(`Question: ${questionParams}`);
 
     const userAnswer = readlineSync.question('Your answer: ');
     if (userAnswer !== correctAnswer) {

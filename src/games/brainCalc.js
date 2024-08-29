@@ -2,16 +2,13 @@ import runEngine from '../index.js';
 import getRandomNumber from '../utils.js';
 
 const getRandomItemFromArray = (array) => {
-  const min = Math.ceil(0);
-  const max = Math.floor(array.length - 1);
-
-  const randomIndex = getRandomNumber(min, max);
+  const randomIndex = getRandomNumber(0, array.length - 1);
 
   return array[randomIndex];
 };
 
-const calculate = (num1, num2, sigh) => {
-  switch (sigh) {
+const calculate = (num1, num2, action) => {
+  switch (action) {
     case '+':
       return num1 + num2;
     case '-':
@@ -19,18 +16,18 @@ const calculate = (num1, num2, sigh) => {
     case '*':
       return num1 * num2;
     default:
-      throw new Error(`Unknown order state: '${sigh}'!`);
+      throw new Error(`Unknown order state: '${action}'!`);
   }
 };
 
 const generateRound = () => {
   const randomNumber1 = getRandomNumber(1, 10);
   const randomNumber2 = getRandomNumber(1, 10);
-  const randomSign = getRandomItemFromArray(['+', '-', '*']);
+  const randomAction = getRandomItemFromArray(['+', '-', '*']);
 
-  const correctAnswer = calculate(randomNumber1, randomNumber2, randomSign);
+  const answer = calculate(randomNumber1, randomNumber2, randomAction);
 
-  return [String(correctAnswer), [randomNumber1, randomSign, randomNumber2]];
+  return [String(answer), `${randomNumber1} ${randomAction} ${randomNumber2}`];
 };
 
 export default function runBrainCalc() {

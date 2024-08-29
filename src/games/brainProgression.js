@@ -13,13 +13,6 @@ const getRandomProgression = (start, length, step) => {
   return progression;
 };
 
-const getRandomIndexFromArray = (array) => {
-  const min = Math.ceil(0);
-  const max = Math.floor(array.length - 1);
-  const randomIndex = getRandomNumber(min, max);
-  return randomIndex;
-};
-
 const generateRound = () => {
   const progressionStart = getRandomNumber(0, 100);
   const progressionLength = 10;
@@ -30,11 +23,11 @@ const generateRound = () => {
     progressionStep,
   );
 
-  const randomIndex = getRandomIndexFromArray(randomProgression);
-  const correctAnswer = randomProgression[randomIndex];
+  const randomIndex = getRandomNumber(0, randomProgression.length - 1);
+  const answer = randomProgression[randomIndex];
   randomProgression[randomIndex] = '..';
 
-  return [String(correctAnswer), [...randomProgression]];
+  return [String(answer), `${randomProgression.join(' ')}`];
 };
 
 export default function runBrainProgression() {

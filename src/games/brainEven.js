@@ -1,8 +1,8 @@
 import runEngine from '../index.js';
 import getRandomNumber from '../utils.js';
 
-const isNumberEven = (number) => {
-  if (number % 2 === 0) {
+const isEven = (num) => {
+  if (num % 2 === 0) {
     return true;
   }
   return false;
@@ -11,8 +11,8 @@ const isNumberEven = (number) => {
 const generateRound = () => {
   const randomNumber = getRandomNumber(1, 100);
 
-  const correctAnswer = isNumberEven(randomNumber) ? 'yes' : 'no';
-  return [correctAnswer, [randomNumber]];
+  const answer = isEven(randomNumber) ? 'yes' : 'no';
+  return [answer, `${randomNumber}`];
 };
 
 export default function runBrainEven() {
