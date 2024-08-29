@@ -7,8 +7,8 @@ const getRandomItemFromArray = (array) => {
   return array[randomIndex];
 };
 
-const calculate = (num1, num2, action) => {
-  switch (action) {
+const calculate = (num1, num2, operator) => {
+  switch (operator) {
     case '+':
       return num1 + num2;
     case '-':
@@ -16,18 +16,18 @@ const calculate = (num1, num2, action) => {
     case '*':
       return num1 * num2;
     default:
-      throw new Error(`Unknown order state: '${action}'!`);
+      throw new Error(`Unknown order state: '${operator}'!`);
   }
 };
 
 const generateRound = () => {
   const randomNumber1 = getRandomNumber(1, 10);
   const randomNumber2 = getRandomNumber(1, 10);
-  const randomAction = getRandomItemFromArray(['+', '-', '*']);
+  const randomOperator = getRandomItemFromArray(['+', '-', '*']);
 
-  const answer = calculate(randomNumber1, randomNumber2, randomAction);
+  const answer = calculate(randomNumber1, randomNumber2, randomOperator);
 
-  return [String(answer), `${randomNumber1} ${randomAction} ${randomNumber2}`];
+  return [String(answer), `${randomNumber1} ${randomOperator} ${randomNumber2}`];
 };
 
 export default function runBrainCalc() {
