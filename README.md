@@ -1,5 +1,13 @@
 # Игры разума
 
+### Testing & Linting:
+
+[![Actions Status](https://github.com/chukichao/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/chukichao/frontend-project-44/actions)
+
+### CodeClimate:
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/7833750f09599b54f834/maintainability)](https://codeclimate.com/github/chukichao/frontend-project-44/maintainability)
+
 ### Пять интерактивных игр на проверку ваших математических способностей.
 
 ### Цель: Ответить на три вопроса подряд. В случае неправильного ответа происходит конец игры, но всегда можно начать заново! Удачи!
@@ -35,11 +43,3 @@ _Установка:_
 ### Brain Prime:
 
 [![asciicast](https://asciinema.org/a/L3n93ErGWU0sqeuktAZmhX9FT.svg)](https://asciinema.org/a/L3n93ErGWU0sqeuktAZmhX9FT)
-
-### Hexlet tests and linter status:
-
-[![Actions Status](https://github.com/chukichao/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/chukichao/frontend-project-44/actions)
-
-### CodeClimate:
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/7833750f09599b54f834/maintainability)](https://codeclimate.com/github/chukichao/frontend-project-44/maintainability)
